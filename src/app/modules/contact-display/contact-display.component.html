@@ -1,3 +1,16 @@
+<form class="form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="input">
+    <mat-label>First name</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Last name</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Search</button>
+</form>
 <div class="table-container">
   <app-contact-table [contacts]="contacts"></app-contact-table>
 </div>

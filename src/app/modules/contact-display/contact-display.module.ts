@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ContactDisplayComponent } from './contact-display.component';
 import { ContactTableComponent } from './components/contact-table/contact-table.component';
 import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import {MatTableModule} from "@angular/material/table";
   ],
   imports: [
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ]
 })
 export class ContactDisplayModule { }
