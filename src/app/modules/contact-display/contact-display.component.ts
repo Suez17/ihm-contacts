@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ContactService} from "../../services/contact.service";
 import {Contact} from "../../models/contact.model";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-contact-display',
@@ -20,9 +21,9 @@ export class ContactDisplayComponent {
   constructor(private contactService: ContactService) {
   }
 
-  onSubmit() {
+  searchContacts(sort?: Sort) {
     const formValue = this.searchForm.value;
-    this.contactService.findAllContacts(formValue.firstName, formValue.lastName)
+    this.contactService.findContacts(formValue.firstName, formValue.lastName, sort)
     .subscribe(response => this.contacts = response._embedded.contacts);
   }
 }

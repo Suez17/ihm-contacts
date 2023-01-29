@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="searchForm" (ngSubmit)="searchContacts()">
   <mat-form-field class="input">
     <mat-label>First name</mat-label>
     <input matInput formControlName="firstName">
@@ -12,5 +12,5 @@
   <button mat-raised-button color="primary" type="submit">Search</button>
 </form>
 <div class="table-container">
-  <app-contact-table [contacts]="contacts"></app-contact-table>
+  <app-contact-table [contacts]="contacts" (sortEventEmitter)="searchContacts($event)"></app-contact-table>
 </div>

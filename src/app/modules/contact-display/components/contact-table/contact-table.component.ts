@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Contact} from "../../../../models/contact.model";
+import {Sort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-contact-table',
@@ -11,5 +12,12 @@ export class ContactTableComponent {
   @Input()
   contacts: Contact[] = [];
 
+  @Output()
+  sortEventEmitter = new EventEmitter<Sort>();
+
   displayedColumns: string[] = ['firstName', 'lastName', 'phoneNumber'];
+
+  onSortChange(sort: Sort) {
+    this.sortEventEmitter.emit(sort);
+  }
 }

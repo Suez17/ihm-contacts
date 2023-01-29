@@ -1,16 +1,16 @@
-<table mat-table [dataSource]="contacts" class="mat-elevation-z8 table">
+<table mat-table [dataSource]="contacts" class="mat-elevation-z8 table" matSort (matSortChange)="onSortChange($event)">
   <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef>First name</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
     <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
   </ng-container>
 
   <ng-container matColumnDef="lastName">
-    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
     <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
   </ng-container>
 
   <ng-container matColumnDef="phoneNumber">
-    <th mat-header-cell *matHeaderCellDef>Phone number</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone number</th>
     <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
   </ng-container>
 
