@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Sort} from "@angular/material/sort";
+import {PageEvent} from "@angular/material/paginator";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ContactService {
   constructor(private http: HttpClient) {
   }
 
-  findContacts(firstName: string, lastName: string, sort?: Sort): Observable<any> {
+  findContacts(firstName: string, lastName: string, sort?: Sort, page?: PageEvent): Observable<any> {
     let params = new HttpParams();
 
     if (firstName) {
@@ -24,6 +25,10 @@ export class ContactService {
 
     if (sort) {
       params = params.append("sort", sort.active.concat(',').concat(sort.direction));
+    }
+
+    if (page) {
+      params = params.append("page", page.pageIndex);
     }
 
     return this.http.get("/contacts", { params });

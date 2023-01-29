@@ -8,6 +8,7 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatSortModule} from "@angular/material/sort";
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class ContactDisplayModule { }

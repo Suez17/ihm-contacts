@@ -12,5 +12,7 @@
   <button mat-raised-button color="primary" type="submit">Search</button>
 </form>
 <div class="table-container">
-  <app-contact-table [contacts]="contacts" (sortEventEmitter)="searchContacts($event)"></app-contact-table>
+  <app-contact-table [contacts]="contacts" [totalElements]=totalElements
+                     (sortEventEmitter)="onSortChange($event)"
+                     (pageEventEmitter)="onPageChange($event)"></app-contact-table>
 </div>

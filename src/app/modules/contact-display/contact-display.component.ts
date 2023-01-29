@@ -3,6 +3,7 @@ import {ContactService} from "../../services/contact.service";
 import {Contact} from "../../models/contact.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Sort} from "@angular/material/sort";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-contact-display',
@@ -17,13 +18,29 @@ export class ContactDisplayComponent {
   });
 
   contacts: Contact[] = [];
+  totalElements: number = 0;
+  sort?: Sort;
+  page?: PageEvent;
 
   constructor(private contactService: ContactService) {
   }
 
-  searchContacts(sort?: Sort) {
+  searchContacts() {
     const formValue = this.searchForm.value;
-    this.contactService.findContacts(formValue.firstName, formValue.lastName, sort)
-    .subscribe(response => this.contacts = response._embedded.contacts);
+    this.contactService.findContacts(formValue.firstName, formValue.lastName, this.sort, this.page)
+    .subscribe(response => {
+      this.contacts = response._embedded.contacts;
+      this.totalElements = response.page.totalElements;
+    });
+  }
+
+  onSortChange(sort: Sort) {
+    this.sort = sort;
+    this.searchContacts();
+  }
+
+  onPageChange(page: PageEvent) {
+    this.page = page;
+    this.searchContacts();
   }
 }

@@ -1,3 +1,4 @@
+<ng-container></ng-container>
 <table mat-table [dataSource]="contacts" class="mat-elevation-z8 table" matSort (matSortChange)="onSortChange($event)">
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
@@ -17,3 +18,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator [length]="totalElements" [pageSize]="20" (page)="onPageChange($event)"></mat-paginator>
