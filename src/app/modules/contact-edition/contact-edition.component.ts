@@ -1,20 +1,19 @@
-import {Component} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
-import {Contact} from "../../models/contact.model";
-import {ContactService} from "../../services/contact.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Observable} from "rxjs";
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Contact } from '../../models/contact.model';
+import { ContactService } from '../../services/contact.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact-edition',
   templateUrl: './contact-edition.component.html',
-  styleUrls: ['./contact-edition.component.scss']
+  styleUrls: ['./contact-edition.component.scss'],
 })
 export class ContactEditionComponent {
-
-  private static readonly SUCCESS = "Success";
-  private static readonly ERROR = "Error";
+  private static readonly SUCCESS = 'Success';
+  private static readonly ERROR = 'Error';
 
   editMode = false;
   editionForm = new FormGroup({
@@ -24,10 +23,14 @@ export class ContactEditionComponent {
     address: new FormControl(),
     email: new FormControl(),
     phoneNumber: new FormControl(),
-    _links: new FormControl()
+    _links: new FormControl(),
   });
 
-  constructor(private router: Router, private contactService: ContactService, private snackBar: MatSnackBar) {
+  constructor(
+    private router: Router,
+    private contactService: ContactService,
+    private snackBar: MatSnackBar
+  ) {
     const navigation = router.getCurrentNavigation();
     const state = navigation?.extras?.state;
     if (state) {
@@ -47,14 +50,14 @@ export class ContactEditionComponent {
       }
       request.subscribe({
         next: () => this.notification(ContactEditionComponent.SUCCESS),
-        error: () => this.notification(ContactEditionComponent.ERROR)
+        error: () => this.notification(ContactEditionComponent.ERROR),
       });
     }
   }
 
   private notification(message: string): void {
     this.snackBar.open(message, undefined, {
-      duration: 3000
+      duration: 3000,
     });
   }
 }

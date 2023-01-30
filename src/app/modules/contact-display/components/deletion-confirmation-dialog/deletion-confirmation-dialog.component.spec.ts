@@ -1,6 +1,6 @@
-import {DeletionConfirmationDialogComponent} from './deletion-confirmation-dialog.component';
-import {MockBuilder, MockedComponentFixture, MockRender} from "ng-mocks";
-import {MatDialogModule} from "@angular/material/dialog";
+import { DeletionConfirmationDialogComponent } from './deletion-confirmation-dialog.component';
+import { MockBuilder, MockedComponentFixture, MockRender } from 'ng-mocks';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('DeletionConfirmationDialogComponent', () => {
   let component: DeletionConfirmationDialogComponent;

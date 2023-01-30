@@ -1,12 +1,11 @@
-import {ContactService} from './contact.service';
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {MockBuilder, ngMocks} from "ng-mocks";
-import {Sort} from "@angular/material/sort";
-import {PageEvent} from "@angular/material/paginator";
-import {Contact} from "../models/contact.model";
+import { ContactService } from './contact.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { MockBuilder, ngMocks } from 'ng-mocks';
+import { Sort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
+import { Contact } from '../models/contact.model';
 
 describe('ContactService', () => {
-
   let httpMock: HttpClient;
   let service: ContactService;
 
@@ -18,17 +17,17 @@ describe('ContactService', () => {
   });
 
   const contact: Contact = {
-    firstName: "dummyFirstName",
-    lastName: "dummyLastName",
+    firstName: 'dummyFirstName',
+    lastName: 'dummyLastName',
     birthDate: new Date(),
-    address: "dummyAddress",
-    email: "dummy@email.com",
-    phoneNumber: "000",
+    address: 'dummyAddress',
+    email: 'dummy@email.com',
+    phoneNumber: '000',
     _links: {
       contact: {
-        href: '/resource-url'
-      }
-    }
+        href: '/resource-url',
+      },
+    },
   };
 
   describe('test findContacts', () => {
@@ -38,13 +37,13 @@ describe('ContactService', () => {
       const lastName = 'dummyLastName';
       const sort: Sort = {
         active: 'firstName',
-        direction: 'asc'
+        direction: 'asc',
       };
 
       const page: PageEvent = {
         pageIndex: 1,
         pageSize: 10,
-        length: 20
+        length: 20,
       };
 
       // When
@@ -52,12 +51,12 @@ describe('ContactService', () => {
 
       // Then
       const params = new HttpParams()
-      .append("firstName", firstName)
-      .append("lastName", lastName)
-      .append("sort", 'firstName,asc')
-      .append("page", 1);
+        .append('firstName', firstName)
+        .append('lastName', lastName)
+        .append('sort', 'firstName,asc')
+        .append('page', 1);
 
-      expect(httpMock.get).toBeCalledWith("/contacts", {params});
+      expect(httpMock.get).toBeCalledWith('/contacts', { params });
     });
   });
 
