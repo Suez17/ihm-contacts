@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
+    "run-docker": "docker build . -t contact-manager:latest && docker run -p 80:80 --network host --name contact-manager contact-manager:latest",
     "watch": "ng build --watch --configuration development",
     "test": "jest"
   },
