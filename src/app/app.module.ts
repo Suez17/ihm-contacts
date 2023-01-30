@@ -11,6 +11,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {ContactDisplayModule} from "./modules/contact-display/contact-display.module";
 import {HttpClientModule} from "@angular/common/http";
+import {ContactEditionModule} from "./modules/contact-edition/contact-edition.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatMenuModule,
     ContactDisplayModule,
+    ContactEditionModule,
     HttpClientModule
   ],
   providers: [],

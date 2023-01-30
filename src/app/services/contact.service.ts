@@ -35,6 +35,10 @@ export class ContactService {
     return this.http.get("/contacts", { params });
   }
 
+  updateContact(contact: Contact): Observable<any> {
+    return this.http.put(contact._links.contact.href, contact);
+  }
+
   deleteContact(contact: Contact): Observable<any> {
     return this.http.delete(contact._links.contact.href);
   }

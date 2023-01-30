@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Location} from "@angular/common";
 import {Router} from "@angular/router";
+import {Contact} from "../../models/contact.model";
+import {ContactService} from "../../services/contact.service";
 
 @Component({
   selector: 'app-contact-edition',
@@ -10,16 +11,31 @@ import {Router} from "@angular/router";
 })
 export class ContactEditionComponent {
 
-  editionForm = new FormGroup({
-    firstName: new FormControl(),
-    lastName: new FormControl()
-  });
+  editionForm: FormGroup = new FormGroup<any>({});
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private contactService: ContactService) {
     const navigation = router.getCurrentNavigation();
     const state = navigation?.extras?.state;
     if (state) {
-      alert(state['firstName']);
+      this.initEditionForm(state as Contact);
+    }
+  }
+
+  private initEditionForm(contact: Contact): void {
+    this.editionForm = new FormGroup({
+      firstName: new FormControl(contact.firstName),
+      lastName: new FormControl(contact.lastName),
+      birthDate: new FormControl(contact.birthDate),
+      address: new FormControl(contact.address),
+      email: new FormControl(contact.email),
+      phoneNumber: new FormControl(contact.phoneNumber),
+      _links: new FormControl(contact._links)
+    });
+  }
+
+  updateContact(): void {
+    if (this.editionForm.valid) {
+      this.contactService.updateContact(this.editionForm.value).subscribe();
     }
   }
 }

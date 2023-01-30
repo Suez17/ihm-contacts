@@ -1,1 +1,38 @@
+<form class="form" [formGroup]="editionForm" (submit)="updateContact()">
+  <mat-form-field class="input">
+    <mat-label>First name</mat-label>
+    <input required matInput formControlName="firstName">
+  </mat-form-field>
 
+  <mat-form-field class="input">
+    <mat-label>Last name</mat-label>
+    <input required matInput formControlName="lastName">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field class="input">
+    <mat-label>Date of birth</mat-label>
+    <input required matInput formControlName="birthDate">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Address</mat-label>
+    <input required matInput formControlName="address">
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field class="input">
+    <mat-label>Email</mat-label>
+    <input required matInput formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Phone number</mat-label>
+    <input required matInput formControlName="phoneNumber">
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="primary" type="submit">Update</button>
+</form>
