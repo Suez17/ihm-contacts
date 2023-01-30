@@ -11,31 +11,27 @@ import {ContactService} from "../../services/contact.service";
 })
 export class ContactEditionComponent {
 
-  editionForm: FormGroup = new FormGroup<any>({});
+  editionForm = new FormGroup({
+    firstName: new FormControl(),
+    lastName: new FormControl(),
+    birthDate: new FormControl(),
+    address: new FormControl(),
+    email: new FormControl(),
+    phoneNumber: new FormControl(),
+    _links: new FormControl()
+  });
 
   constructor(private router: Router, private contactService: ContactService) {
     const navigation = router.getCurrentNavigation();
     const state = navigation?.extras?.state;
     if (state) {
-      this.initEditionForm(state as Contact);
+      this.editionForm.setValue(state as Contact);
     }
-  }
-
-  private initEditionForm(contact: Contact): void {
-    this.editionForm = new FormGroup({
-      firstName: new FormControl(contact.firstName),
-      lastName: new FormControl(contact.lastName),
-      birthDate: new FormControl(contact.birthDate),
-      address: new FormControl(contact.address),
-      email: new FormControl(contact.email),
-      phoneNumber: new FormControl(contact.phoneNumber),
-      _links: new FormControl(contact._links)
-    });
   }
 
   updateContact(): void {
     if (this.editionForm.valid) {
-      this.contactService.updateContact(this.editionForm.value).subscribe();
+      this.contactService.updateContact(this.editionForm.value as Contact).subscribe();
     }
   }
 }

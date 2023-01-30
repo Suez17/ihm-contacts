@@ -6,6 +6,7 @@ import {ContactEditionComponent} from "./modules/contact-edition/contact-edition
 export const routes: Routes = [
   { path: 'display', component: ContactDisplayComponent },
   { path: 'edition', component: ContactEditionComponent },
+  { path: 'creation', component: ContactEditionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'display' }
 ];
 

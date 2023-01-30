@@ -36,7 +36,11 @@ export class ContactService {
   }
 
   updateContact(contact: Contact): Observable<any> {
-    return this.http.put(contact._links.contact.href, contact);
+    const resourceUrl = contact._links?.contact.href;
+    if (resourceUrl) {
+      return this.http.put(resourceUrl, contact);
+    }
+    return this.http.post("/contacts", contact);
   }
 
   deleteContact(contact: Contact): Observable<any> {
