@@ -31,7 +31,7 @@ describe('ContactDisplayComponent', () => {
   );
 
   beforeEach(() => {
-    fixture = MockRender(ContactDisplayComponent, null, false);
+    fixture = MockRender(ContactDisplayComponent);
     component = fixture.point.componentInstance;
     contactService = ngMocks.findInstance(ContactService);
     matDialog = ngMocks.findInstance(MatDialog);
