@@ -4,7 +4,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {Contact} from "../../models/contact.model";
 import {ContactService} from "../../services/contact.service";
 import {when} from "jest-when";
-import {of} from "rxjs";
+import {EMPTY, of} from "rxjs";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
+import {Sort} from "@angular/material/sort";
 
 describe('ContactDisplayComponent', () => {
   let component: ContactDisplayComponent;
@@ -15,6 +18,8 @@ describe('ContactDisplayComponent', () => {
     MockBuilder(ContactDisplayComponent)
     .mock(ContactService)
     .mock(MatDialog)
+    .mock(MatFormFieldModule)
+    .mock(MatPaginatorModule)
   );
 
   beforeEach(() => {
@@ -42,19 +47,19 @@ describe('ContactDisplayComponent', () => {
   describe('test fetchContacts', () => {
     it('should set contacts', () => {
       // Given
-      component.searchForm.setValue({firstName, lastName });
+      component.searchForm.setValue({firstName, lastName});
 
       when(contactService.findContacts)
-        .calledWith(firstName, lastName, undefined, undefined)
-        .mockReturnValue(of({
-          _embedded: {
-            contacts: [contact]
-          },
-          page: {
-            size: 20,
-            totalElements: 9
-          }
-        }));
+      .calledWith(firstName, lastName, undefined, undefined)
+      .mockReturnValue(of({
+        _embedded: {
+          contacts: [contact]
+        },
+        page: {
+          size: 20,
+          totalElements: 9
+        }
+      }));
 
       // When
       component.fetchContacts();
@@ -64,5 +69,48 @@ describe('ContactDisplayComponent', () => {
       expect(component.pageSize).toBe(20);
       expect(component.totalElements).toBe(9);
     });
+  });
+
+  describe('test onSortChange', () => {
+    it('should set sort attribute', () => {
+      // Given
+      const sort: Sort = {
+        active: 'firstName',
+        direction: 'asc'
+      };
+
+      when(contactService.findContacts).mockReturnValue(EMPTY);
+
+      const spyFetchContrats = jest.spyOn(component, 'fetchContacts');
+
+      // When
+      component.onSortChange(sort);
+
+      // Then
+      expect(component['sort']).toBe(sort);
+      expect(spyFetchContrats).toHaveBeenCalled();
+    })
+  });
+
+  describe('test onPageChange', () => {
+    it('should set page attribute', () => {
+      // Given
+      const page: PageEvent = {
+        pageIndex: 1,
+        pageSize: 10,
+        length: 20
+      };
+
+      when(contactService.findContacts).mockReturnValue(EMPTY);
+
+      const spyFetchContrats = jest.spyOn(component, 'fetchContacts');
+
+      // When
+      component.onPageChange(page);
+
+      // Then
+      expect(component['page']).toBe(page);
+      expect(spyFetchContrats).toHaveBeenCalled();
+    })
   });
 });
