@@ -11,9 +11,11 @@
 
   <br>
 
-  <mat-form-field class="input">
+  <mat-form-field>
     <mat-label>Date of birth</mat-label>
-    <input required matInput formControlName="birthDate">
+    <input required matInput [matDatepicker]="picker" formControlName="birthDate" class="input">
+    <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="input">
