@@ -1,17 +1,17 @@
-<form class="form" [formGroup]="searchForm" (ngSubmit)="fetchContacts()">
-  <mat-form-field class="input">
-    <mat-label>First name</mat-label>
-    <input matInput formControlName="firstName">
-  </mat-form-field>
+<div class="container">
+  <form [formGroup]="searchForm" (ngSubmit)="fetchContacts()">
+    <mat-form-field class="input">
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
 
-  <mat-form-field class="input">
-    <mat-label>Last name</mat-label>
-    <input matInput formControlName="lastName">
-  </mat-form-field>
+    <mat-form-field class="input">
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Search</button>
-</form>
-<div class="table-container">
+    <button mat-raised-button color="primary" type="submit">Search</button>
+  </form>
   <table class="table" mat-table [dataSource]="contacts" class="mat-elevation-z8 table" matSort
          (matSortChange)="onSortChange($event)">
     <ng-container matColumnDef="firstName">
