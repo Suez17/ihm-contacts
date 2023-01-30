@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ContactDisplayComponent } from './contact-display.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ContactDisplayComponent} from './contact-display.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -9,7 +9,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatIconModule} from "@angular/material/icon";
-import { DeletionConfirmationDialogComponent } from './components/deletion-confirmation-dialog/deletion-confirmation-dialog.component';
+import {
+  DeletionConfirmationDialogComponent
+} from './components/deletion-confirmation-dialog/deletion-confirmation-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {RouterLink} from "@angular/router";
 

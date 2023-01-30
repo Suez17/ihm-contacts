@@ -1,12 +1,5 @@
 import {ContactDisplayComponent} from './contact-display.component';
-import {
-  MockBuilder,
-  MockedComponentFixture,
-  MockInstance,
-  MockRender,
-  MockService,
-  ngMocks
-} from "ng-mocks";
+import {MockBuilder, MockedComponentFixture, MockRender, MockService, ngMocks} from "ng-mocks";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Contact} from "../../models/contact.model";
 import {ContactService} from "../../services/contact.service";

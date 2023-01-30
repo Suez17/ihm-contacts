@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ContactDisplayComponent} from "./modules/contact-display/contact-display.component";
 import {ContactEditionComponent} from "./modules/contact-edition/contact-edition.component";
 
