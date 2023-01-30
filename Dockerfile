@@ -1,4 +1,4 @@
-FROM node:current-alpine3.16 AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY . .
 
 ARG DEPLOYMENT_TYPE
 
-RUN npm install && npm run build
+RUN npm ci && npm run build
 
 FROM nginx:alpine
 
