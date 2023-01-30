@@ -95,14 +95,14 @@ describe('ContactDisplayComponent', () => {
 
       when(contactService.findContacts).mockReturnValue(EMPTY);
 
-      const spyFetchContrats = jest.spyOn(component, 'fetchContacts');
+      const spyFetchContacts = jest.spyOn(component, 'fetchContacts');
 
       // When
       component.onSortChange(sort);
 
       // Then
       expect(component['sort']).toBe(sort);
-      expect(spyFetchContrats).toHaveBeenCalled();
+      expect(spyFetchContacts).toHaveBeenCalled();
     });
   });
 
@@ -117,14 +117,14 @@ describe('ContactDisplayComponent', () => {
 
       when(contactService.findContacts).mockReturnValue(EMPTY);
 
-      const spyFetchContrats = jest.spyOn(component, 'fetchContacts');
+      const spyFetchContacts = jest.spyOn(component, 'fetchContacts');
 
       // When
       component.onPageChange(page);
 
       // Then
       expect(component['page']).toBe(page);
-      expect(spyFetchContrats).toHaveBeenCalled();
+      expect(spyFetchContacts).toHaveBeenCalled();
     });
   });
 
@@ -140,13 +140,13 @@ describe('ContactDisplayComponent', () => {
         .mockReturnValue(of({}));
 
       when(contactService.findContacts).mockReturnValue(EMPTY);
-      const spyFetchContrats = jest.spyOn(component, 'fetchContacts');
+      const spyFetchContacts = jest.spyOn(component, 'fetchContacts');
 
       // When
       component.onDelete(contact);
 
       // Then
-      expect(spyFetchContrats).toHaveBeenCalled();
+      expect(spyFetchContacts).toHaveBeenCalled();
     });
   });
 });
