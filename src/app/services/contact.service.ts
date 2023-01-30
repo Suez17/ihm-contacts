@@ -13,7 +13,7 @@ export class ContactService {
   constructor(private http: HttpClient) {
   }
 
-  findContacts(firstName: string, lastName: string, sort?: Sort, page?: PageEvent): Observable<any> {
+  findContacts(firstName?: string, lastName?: string, sort?: Sort, page?: PageEvent): Observable<any> {
     let params = new HttpParams();
 
     if (firstName) {
