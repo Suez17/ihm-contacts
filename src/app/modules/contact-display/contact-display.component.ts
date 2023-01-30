@@ -12,6 +12,9 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class ContactDisplayComponent {
 
+  private sort?: Sort;
+  private page?: PageEvent;
+
   displayedColumns: string[] = ['firstName', 'lastName', 'phoneNumber'];
 
   searchForm = new FormGroup({
@@ -22,8 +25,6 @@ export class ContactDisplayComponent {
   contacts: Contact[] = [];
   totalElements: number = 0;
   pageSize: number = 0;
-  sort?: Sort;
-  page?: PageEvent;
 
   constructor(private contactService: ContactService) {
   }
