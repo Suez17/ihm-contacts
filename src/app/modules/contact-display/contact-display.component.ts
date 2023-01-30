@@ -33,7 +33,7 @@ export class ContactDisplayComponent {
   constructor(private contactService: ContactService, private dialog: MatDialog) {
   }
 
-  searchContacts(): void {
+  fetchContacts(): void {
     const formValue = this.searchForm.value;
     this.contactService.findContacts(formValue.firstName, formValue.lastName, this.sort, this.page)
     .subscribe(response => {
@@ -45,12 +45,12 @@ export class ContactDisplayComponent {
 
   onSortChange(sort: Sort): void {
     this.sort = sort;
-    this.searchContacts();
+    this.fetchContacts();
   }
 
   onPageChange(page: PageEvent): void {
     this.page = page;
-    this.searchContacts();
+    this.fetchContacts();
   }
 
   onDelete(contact: Contact): void {
@@ -58,7 +58,7 @@ export class ContactDisplayComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.contactService.deleteContact(contact).subscribe(() => this.searchContacts());
+        this.contactService.deleteContact(contact).subscribe(() => this.fetchContacts());
       }
     });
   }
