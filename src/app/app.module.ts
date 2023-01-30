@@ -12,6 +12,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ContactDisplayModule } from './modules/contact-display/contact-display.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactEditionModule } from './modules/contact-edition/contact-edition.module';
+import {CustomRouteReuseStrategy} from "./services/custom-route-reuse-strategy";
+import {RouteReuseStrategy} from "@angular/router";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +30,9 @@ import { ContactEditionModule } from './modules/contact-edition/contact-edition.
     ContactEditionModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
