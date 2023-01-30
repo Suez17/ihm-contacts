@@ -15,6 +15,8 @@ import {EMPTY, of} from "rxjs";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {Sort} from "@angular/material/sort";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
 
 describe('ContactDisplayComponent', () => {
   let component: ContactDisplayComponent;
@@ -28,6 +30,8 @@ describe('ContactDisplayComponent', () => {
     .mock(MatDialog)
     .mock(MatFormFieldModule)
     .mock(MatPaginatorModule)
+    .mock(ReactiveFormsModule)
+    .mock(MatTableModule)
   );
 
   beforeEach(() => {
@@ -51,7 +55,7 @@ describe('ContactDisplayComponent', () => {
         href: '/resource-url'
       }
     }
-  }
+  };
 
   describe('test fetchContacts', () => {
     it('should set contacts', () => {

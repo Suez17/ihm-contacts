@@ -29,7 +29,7 @@ describe('ContactService', () => {
         href: '/resource-url'
       }
     }
-  }
+  };
 
   describe('test findContacts', () => {
     it('should call GET /contacts', () => {
