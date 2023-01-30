@@ -3,6 +3,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Contact} from "../../models/contact.model";
 import {ContactService} from "../../services/contact.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-contact-edition',
@@ -10,6 +12,9 @@ import {ContactService} from "../../services/contact.service";
   styleUrls: ['./contact-edition.component.scss']
 })
 export class ContactEditionComponent {
+
+  private static readonly SUCCESS = "Success";
+  private static readonly ERROR = "Error";
 
   editionForm = new FormGroup({
     firstName: new FormControl(),
@@ -21,7 +26,7 @@ export class ContactEditionComponent {
     _links: new FormControl()
   });
 
-  constructor(private router: Router, private contactService: ContactService) {
+  constructor(private router: Router, private contactService: ContactService, private snackBar: MatSnackBar) {
     const navigation = router.getCurrentNavigation();
     const state = navigation?.extras?.state;
     if (state) {
@@ -29,9 +34,23 @@ export class ContactEditionComponent {
     }
   }
 
-  updateContact(): void {
+  onSubmit(): void {
     if (this.editionForm.valid) {
-      this.contactService.updateContact(this.editionForm.value as Contact).subscribe();
+      const contact = this.editionForm.value as Contact;
+      let request: Observable<any>;
+      if (contact._links) {
+        request = this.contactService.updateContact(contact);
+      } else {
+        request = this.contactService.createContact(contact);
+      }
+      request.subscribe({
+        next: () => this.notification(ContactEditionComponent.SUCCESS),
+        error: () => this.notification(ContactEditionComponent.ERROR)
+      });
     }
+  }
+
+  private notification(message: string): void {
+    this.snackBar.open(message);
   }
 }
