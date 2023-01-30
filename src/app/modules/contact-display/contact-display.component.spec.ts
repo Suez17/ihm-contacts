@@ -1,6 +1,13 @@
 import {ContactDisplayComponent} from './contact-display.component';
-import {MockBuilder, MockedComponentFixture, MockRender, ngMocks} from "ng-mocks";
-import {MatDialog} from "@angular/material/dialog";
+import {
+  MockBuilder,
+  MockedComponentFixture,
+  MockInstance,
+  MockRender,
+  MockService,
+  ngMocks
+} from "ng-mocks";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Contact} from "../../models/contact.model";
 import {ContactService} from "../../services/contact.service";
 import {when} from "jest-when";
@@ -13,6 +20,7 @@ describe('ContactDisplayComponent', () => {
   let component: ContactDisplayComponent;
   let fixture: MockedComponentFixture<ContactDisplayComponent>;
   let contactService: ContactService;
+  let matDialog: MatDialog;
 
   beforeEach(() =>
     MockBuilder(ContactDisplayComponent)
@@ -26,6 +34,7 @@ describe('ContactDisplayComponent', () => {
     fixture = MockRender(ContactDisplayComponent, null, false);
     component = fixture.point.componentInstance;
     contactService = ngMocks.findInstance(ContactService);
+    matDialog = ngMocks.findInstance(MatDialog);
   });
 
   const firstName = "dummyFirstName";
@@ -110,6 +119,28 @@ describe('ContactDisplayComponent', () => {
 
       // Then
       expect(component['page']).toBe(page);
+      expect(spyFetchContrats).toHaveBeenCalled();
+    })
+  });
+
+  describe('test onDelete', () => {
+    it('should open dialog and delete contact', () => {
+      // Given
+      const matDialogRef = MockService(MatDialogRef);
+      when(matDialog.open).mockReturnValue(matDialogRef);
+      when(matDialogRef.afterClosed).mockReturnValue(of(true));
+
+      when(contactService.deleteContact)
+      .calledWith(contact)
+      .mockReturnValue(of({}));
+
+      when(contactService.findContacts).mockReturnValue(EMPTY);
+      const spyFetchContrats = jest.spyOn(component, 'fetchContacts');
+
+      // When
+      component.onDelete(contact);
+
+      // Then
       expect(spyFetchContrats).toHaveBeenCalled();
     })
   });
