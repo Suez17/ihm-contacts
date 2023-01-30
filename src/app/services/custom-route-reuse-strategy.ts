@@ -1,4 +1,8 @@
-import { ActivatedRouteSnapshot, BaseRouteReuseStrategy, DetachedRouteHandle } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  BaseRouteReuseStrategy,
+  DetachedRouteHandle,
+} from '@angular/router';
 
 export class CustomRouteReuseStrategy extends BaseRouteReuseStrategy {
   private storedRoutes = new Map<string, DetachedRouteHandle>();
@@ -7,7 +11,10 @@ export class CustomRouteReuseStrategy extends BaseRouteReuseStrategy {
     return route.routeConfig?.path === 'display';
   }
 
-  override store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): void {
+  override store(
+    route: ActivatedRouteSnapshot,
+    handle: DetachedRouteHandle
+  ): void {
     const path = route.routeConfig?.path;
     if (path) {
       this.storedRoutes.set(path, handle);

@@ -10,14 +10,14 @@ describe('CustomRouteReuseStrategy', () => {
 
   const route = {
     routeConfig: {
-      path
-    }
+      path,
+    },
   } as ActivatedRouteSnapshot;
   const routeWithoutRouteConfig = {} as ActivatedRouteSnapshot;
   const routeWithoutPath = {
     routeConfig: {
-      path: undefined
-    }
+      path: undefined,
+    },
   } as ActivatedRouteSnapshot;
   const handle: DetachedRouteHandle = {};
 
@@ -34,8 +34,8 @@ describe('CustomRouteReuseStrategy', () => {
       // Given
       const otherRoute = {
         routeConfig: {
-          path: otherPath
-        }
+          path: otherPath,
+        },
       } as ActivatedRouteSnapshot;
 
       // When + Then
