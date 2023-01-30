@@ -16,6 +16,7 @@ export class ContactEditionComponent {
   private static readonly SUCCESS = "Success";
   private static readonly ERROR = "Error";
 
+  editMode = false;
   editionForm = new FormGroup({
     firstName: new FormControl(),
     lastName: new FormControl(),
@@ -31,6 +32,7 @@ export class ContactEditionComponent {
     const state = navigation?.extras?.state;
     if (state) {
       this.editionForm.setValue(state as Contact);
+      this.editMode = true;
     }
   }
 
@@ -51,6 +53,8 @@ export class ContactEditionComponent {
   }
 
   private notification(message: string): void {
-    this.snackBar.open(message);
+    this.snackBar.open(message, undefined, {
+      duration: 3000
+    });
   }
 }
