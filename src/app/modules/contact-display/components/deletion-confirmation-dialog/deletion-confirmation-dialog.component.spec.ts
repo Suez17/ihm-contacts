@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { DeletionConfirmationDialogComponent } from './deletion-confirmation-dialog.component';
+import {DeletionConfirmationDialogComponent} from './deletion-confirmation-dialog.component';
+import {MockBuilder, MockedComponentFixture, MockRender} from "ng-mocks";
+import {MatDialogModule} from "@angular/material/dialog";
 
 describe('DeletionConfirmationDialogComponent', () => {
   let component: DeletionConfirmationDialogComponent;
-  let fixture: ComponentFixture<DeletionConfirmationDialogComponent>;
+  let fixture: MockedComponentFixture<DeletionConfirmationDialogComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DeletionConfirmationDialogComponent ]
-    })
-    .compileComponents();
+  beforeEach(() =>
+    MockBuilder(DeletionConfirmationDialogComponent).mock(MatDialogModule)
+  );
 
-    fixture = TestBed.createComponent(DeletionConfirmationDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    fixture = MockRender(DeletionConfirmationDialogComponent);
+    component = fixture.point.componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('test template', () => {
+    it('should contain two buttons', () => {
+      expect(fixture.nativeElement.querySelectorAll('button').length).toBe(2);
+    });
   });
 });
