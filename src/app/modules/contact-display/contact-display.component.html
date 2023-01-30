@@ -12,7 +12,25 @@
   <button mat-raised-button color="primary" type="submit">Search</button>
 </form>
 <div class="table-container">
-  <app-contact-table [contacts]="contacts" [totalElements]=totalElements
-                     (sortEventEmitter)="onSortChange($event)"
-                     (pageEventEmitter)="onPageChange($event)"></app-contact-table>
+  <table class="table" mat-table [dataSource]="contacts" class="mat-elevation-z8 table" matSort (matSortChange)="onSortChange($event)">
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone number</th>
+      <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="totalElements" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
 </div>

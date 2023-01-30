@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactDisplayComponent } from './contact-display.component';
-import { ContactTableComponent } from './components/contact-table/contact-table.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -12,8 +11,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
-    ContactDisplayComponent,
-    ContactTableComponent
+    ContactDisplayComponent
   ],
   exports: [
     ContactDisplayComponent

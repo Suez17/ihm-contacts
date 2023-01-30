@@ -12,6 +12,8 @@ import {PageEvent} from "@angular/material/paginator";
 })
 export class ContactDisplayComponent {
 
+  displayedColumns: string[] = ['firstName', 'lastName', 'phoneNumber'];
+
   searchForm = new FormGroup({
     firstName: new FormControl(),
     lastName: new FormControl()
@@ -19,6 +21,7 @@ export class ContactDisplayComponent {
 
   contacts: Contact[] = [];
   totalElements: number = 0;
+  pageSize: number = 0;
   sort?: Sort;
   page?: PageEvent;
 
@@ -31,6 +34,7 @@ export class ContactDisplayComponent {
     .subscribe(response => {
       this.contacts = response._embedded.contacts;
       this.totalElements = response.page.totalElements;
+      this.pageSize = response.page.size;
     });
   }
 
