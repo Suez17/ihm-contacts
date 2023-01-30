@@ -56,7 +56,7 @@ describe('ContactService', () => {
         .append('sort', 'firstName,asc')
         .append('page', 1);
 
-      expect(httpMock.get).toBeCalledWith('/contacts', { params });
+      expect(httpMock.get).toHaveBeenCalledWith('/contacts', { params });
     });
   });
 
@@ -66,7 +66,7 @@ describe('ContactService', () => {
       service.createContact(contact);
 
       // Then
-      expect(httpMock.post).toBeCalledWith('/contacts', contact);
+      expect(httpMock.post).toHaveBeenCalledWith('/contacts', contact);
     });
   });
 
@@ -76,7 +76,7 @@ describe('ContactService', () => {
       service.updateContact(contact);
 
       // Then
-      expect(httpMock.put).toBeCalledWith('/resource-url', contact);
+      expect(httpMock.put).toHaveBeenCalledWith('/resource-url', contact);
     });
   });
 
@@ -86,7 +86,7 @@ describe('ContactService', () => {
       service.deleteContact(contact);
 
       // Then
-      expect(httpMock.delete).toBeCalledWith('/resource-url');
+      expect(httpMock.delete).toHaveBeenCalledWith('/resource-url');
     });
   });
 });
