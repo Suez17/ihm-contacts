@@ -7,13 +7,14 @@ import {
 } from 'ng-mocks';
 import { ContactService } from '../../services/contact.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Contact } from '../../models/contact.model';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { when } from 'jest-when';
 import { of } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('ContactEditionComponent', () => {
   let component: ContactEditionComponent;
@@ -52,6 +53,8 @@ describe('ContactEditionComponent', () => {
       })
       .mock(MatSnackBar)
       .mock(ReactiveFormsModule)
+      .mock(MatIconModule)
+      .mock(RouterModule)
   );
 
   beforeEach(() => {

@@ -1,4 +1,12 @@
 <div class="container">
+  <button
+    mat-icon-button
+    color="primary"
+    [routerLink]="'/display'"
+    *ngIf="editMode"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
   <form [formGroup]="editionForm" (submit)="onSubmit()">
     <mat-form-field class="input">
       <mat-label>First name</mat-label>
