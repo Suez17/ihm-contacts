@@ -3,9 +3,9 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>Show contacts</button>
+    <button mat-menu-item [routerLink]="'/display'">Show contacts</button>
     <button mat-menu-item>Create new contact</button>
   </mat-menu>
   <span>Contact Manager</span>
 </mat-toolbar>
-<app-contact-display></app-contact-display>
+<router-outlet></router-outlet>

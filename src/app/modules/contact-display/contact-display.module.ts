@@ -11,6 +11,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatIconModule} from "@angular/material/icon";
 import { DeletionConfirmationDialogComponent } from './components/deletion-confirmation-dialog/deletion-confirmation-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSortModule,
     MatPaginatorModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterLink
   ]
 })
 export class ContactDisplayModule { }
