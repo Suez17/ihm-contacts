@@ -1,18 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ContactEditionComponent } from './contact-edition.component';
-import {ContactDisplayComponent} from "../contact-display/contact-display.component";
+import {ContactEditionComponent} from './contact-edition.component';
 import {MockBuilder, MockedComponentFixture, MockRender, ngMocks} from "ng-mocks";
 import {ContactService} from "../../services/contact.service";
-import {MatDialog} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatPaginatorModule} from "@angular/material/paginator";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Contact} from "../../models/contact.model";
-import {MatDatepicker, MatDatepickerModule} from "@angular/material/datepicker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 import {ReactiveFormsModule} from "@angular/forms";
-import {MatTableModule} from "@angular/material/table";
 import {when} from "jest-when";
 import {of} from "rxjs";
 
