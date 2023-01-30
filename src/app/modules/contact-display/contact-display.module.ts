@@ -8,10 +8,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatIconModule} from "@angular/material/icon";
+import { DeletionConfirmationDialogComponent } from './components/deletion-confirmation-dialog/deletion-confirmation-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
-    ContactDisplayComponent
+    ContactDisplayComponent,
+    DeletionConfirmationDialogComponent
   ],
   exports: [
     ContactDisplayComponent
@@ -24,7 +28,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ReactiveFormsModule,
     MatButtonModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class ContactDisplayModule { }

@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Sort} from "@angular/material/sort";
 import {PageEvent} from "@angular/material/paginator";
+import {Contact} from "../models/contact.model";
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,9 @@ export class ContactService {
     }
 
     return this.http.get("/contacts", { params });
+  }
+
+  deleteContact(contact: Contact): Observable<any> {
+    return this.http.delete(contact._links.contact.href);
   }
 }

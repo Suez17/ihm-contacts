@@ -4,5 +4,6 @@ export interface Contact {
   birthDate: Date,
   address: string,
   email: string,
-  phoneNumber: string
+  phoneNumber: string,
+  _links: any;
 }
